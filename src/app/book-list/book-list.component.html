@@ -1,0 +1,41 @@
+<div class="container" style="margin-top: 70px;">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Image Path</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+
+        <td>{{ book.id }}</td>
+        <td> {{ book.name }}</td>
+        <td> {{ book.author }}</td>
+        <td> <img width="100px" height="100px" src={{book.imagePath}} /></td>
+        <td>
+          <button class="btn btn-primary" (click)="selectBook(book)"> Show details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="card text-center" *ngIf="selectedBook">
+      <div class="card-header">
+        # {{selectedBook.id}}
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">{{selectedBook.name}}</h4>
+        <div class="card-block"><img height="200px" width="200px" src={{selectedBook.imagePath}} /></div>
+        <p class="card-text">
+          {{selectedBook.author}}
+        </p>
+        <button (click)="addToCart(selectedBook, 1)" >Add To Cart</button>
+      </div>
+  </div>
+  <!-- <div>
+      <button (click)="testBack()" >Test Back</button>
+  </div> -->
+</div>
